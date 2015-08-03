@@ -7,35 +7,35 @@
 
 \documentclass[a4paper, 11pt]{scrartcl}
 
-% --------------------------- Packages :
-\usepackage[utf8]{inputenc}
-\usepackage{aeguill, xspace}
+% --------------------------------- Packages
 \usepackage[american, francais]{babel}
-\usepackage{graphicx, fancyhdr}
-\usepackage{amsmath, amsfonts, amssymb, marvosym, textcomp}
-\usepackage{vmargin}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{xcolor}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
 \usepackage{url}
+\usepackage{xspace}
+
+\usepackage{packages/vendor/aeguill}
+\usepackage{packages/vendor/vmargin}
 
 \urlstyle{sf}
 
 \newcommand\email{\begingroup\Url}
 
-\usepackage{ifpdf}
-\ifpdf
-	\usepackage[pdftex]{xcolor}
-	\usepackage[pdftex, colorlinks,%
-		pdfpagelayout=SinglePage,%
-		pdftitle={Curriculum Vitæ},%
-		pdfauthor={Nicolas Dubois},%
-		pagebackref=true,%
-		pdfnewwindow=true,%
-		bookmarksnumbered=true,%
-		pdfstartview={FitH},
-		urlcolor=black,
-		linkcolor=black,
-		bookmarksopen]%
-	{hyperref}
-\fi
+\usepackage[pdftex, colorlinks,%
+	pdfpagelayout=SinglePage,%
+	pdftitle={Curriculum Vitæ — Résumé},%
+	pdfauthor={Nicolas Dubois, @wo0dyn},%
+	pagebackref=true,%
+	pdfnewwindow=true,%
+	bookmarksnumbered=true,%
+	pdfstartview={FitH},
+	urlcolor=black,
+	linkcolor=black,
+	bookmarksopen]%
+{hyperref}
 
 \pagestyle{empty}
 
