@@ -3,6 +3,8 @@
 % Nicolas Dubois <nicolas.c.dubois@gmail.com>
 % http://nicolasdubois.com • @wo0dyn
 %
+% KOMA-Script: scrartcl
+%
 % This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International
 % License.
 % To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/.
@@ -10,7 +12,7 @@
 
 \documentclass[a4paper, 11pt]{scrartcl}
 
-% --------------------------------- Packages
+% Packages:
 \usepackage[american, francais]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[pdftex]{xcolor}
@@ -24,8 +26,6 @@
 \usepackage{packages/vendor/vmargin}
 
 \urlstyle{sf}
-
-\newcommand\email{\begingroup\Url}
 
 \usepackage[pdftex, colorlinks,%
 	pdfpagelayout=SinglePage,%
@@ -41,56 +41,42 @@
 {hyperref}
 
 \pagestyle{empty}
-
 \setmarginsrb
-        {10mm} % est la marge gauche
-        {10mm} % est la marge en haut
-        {10mm} % est la marge droite
-        {10mm} % est la marge en bas
-        {00mm} % fixe la hauteur de l'entête
-        {00mm} % fixe la distance entre l'entête et le texte
-        {00mm} % fixe la hauteur du pied de page
-        {00mm} % fixe la distance entre le texte et le pied de page
-% note : utilisation du package vmargin.
+        {10mm} % left margin
+        {10mm} % top margin
+        {10mm} % right margin
+        {10mm} % bottom margin
+        {00mm} % head height
+        {00mm} % head sep
+        {00mm} % foot height
+        {00mm} % foot skip
 
-% --------------------------- Redéfinition des sections :
+% Refine sections:
 \let\mySection\section
     \renewcommand{\section}[1]{
     \addcontentsline{toc}{section}{#1}%
     \mySection*{#1 \hrulefill}%
 }
 
-% --------------------------- Redéfinition des subsections :
+% Redefine subsections:
 \let\mySubsection\subsection
     \renewcommand{\subsection}[1]{%
     \addcontentsline{toc}{subsection}{#1}%
     \mySubsection*{\hspace{5mm}› #1}%
 }
 
-% --------------------------- Redéfinition des items :
+% Redefine items:
 \let\myItem\item
     \renewcommand{\item}[1]{%
     \myItem {\titlefont #1}%
 }
 
-% --------------------------- Nouvelles commandes :
-% Citer un site web :
+% Custom commands:
+\newcommand\email{\begingroup\Url}
 \newcommand{\website}[1]{\ \\\hspace{35mm}\email{#1}}
-% Citer un boulot :
 \newcommand{\job}[6]{%
     \item{#1}, #2 (#3), #4, #5%
     \begin{quote}\hspace{-7mm}#6\end{quote}%
-}
-
-% Mise en page de l'état civil :
-\newlength\width%
-\newcommand{\etatCivil}[1] {%
-    \width=\textwidth\advance\width by -2cm%
-    \advance\width by -.5cm%
-    \begin{minipage}[c]{32mm}
-        \includegraphics[width=30mm]{images/wo0dyn-circle.jpg}%
-    \end{minipage}\hfill%
-    \begin{minipage}[c]{\width}#1\end{minipage}%
 }
 
 \begin{document}
@@ -105,19 +91,21 @@
 \end{center}
 
 \section{État civil}
-\hspace{10mm}
-\etatCivil{
-    \begin{tabular}{p{48mm}@{ }p{80mm}}
-        {\bfseries Situation de famille}\dotfill&Divorcé, 2 enfants\\
-        {\bfseries Nationalité}\dotfill&Française\\
-        {\bfseries Date de naissance}\dotfill&15 juin 1979 à Nancy (54)\\
-        {\bfseries Adresse E-mail}\dotfill&\email{nicolas.c.dubois@gmail.com}\\
-        {\bfseries Page personnelle}\dotfill&\email{http://nicolasdubois.com}\\
-        {\bfseries Moyens de locomotion}\dotfill&Permis B, véhicule\\
-        {\bfseries Centres d'intérêts}\dotfill&Musique (guitare),
-            sports (basket-ball, golf, ski)\\
-    \end{tabular}
-}
+    \begin{minipage}[c]{32mm}
+        \includegraphics[width=30mm]{images/wo0dyn-circle.jpg}%
+    \end{minipage}\hfill%
+    \begin{minipage}[c]{20cm}
+        \begin{tabular}{p{48mm}@{ }p{80mm}}
+            {\bfseries Situation de famille}\dotfill&Divorcé, 2 enfants\\
+            {\bfseries Nationalité}\dotfill&Française\\
+            {\bfseries Date de naissance}\dotfill&15 juin 1979 à Nancy (54)\\
+            {\bfseries Adresse E-mail}\dotfill&\email{nicolas.c.dubois@gmail.com}\\
+            {\bfseries Page personnelle}\dotfill&\email{http://nicolasdubois.com}\\
+            {\bfseries Moyens de locomotion}\dotfill&Permis B, véhicule\\
+            {\bfseries Centres d'intérêts}\dotfill&Musique (guitare),
+                sports (basket-ball, golf, ski)\\
+        \end{tabular}
+    \end{minipage}%
 
 \section{Expérience professionnelle}
 
@@ -178,47 +166,10 @@
     \job{Laboratoire Leibniz--IMAG}{Grenoble}{38}{Stage Master de Recherche}{Février--Juillet 2005}{
         Développement et intégration d'un module émotionnel sur une plateforme
         d'agent conversationnel de recommandation.
-        Modélisation en UML et implémentation en langage Java.%\\
-        %$\bullet$ Directrice : Sylvie Pesty (PR - Université Pierre Mendès-France)
+        Modélisation en UML et implémentation en langage Java.
         \website{http://magma.imag.fr}
     }
 
-    % \job{Université du Luxembourg}{Walferdange}{Luxembourg}{Stage non obligatoire}{Juillet 2004}{
-    %     Réalisation de formats d'items dynamiques déployés par la plateforme de testing assisté
-    %     par ordinateur au sein de l'équipe de recherche EMACS%\footnote{\sf EMACS: Educational
-    %     %Measurement and Applied Cognitive Science}.%\\
-    %     %$\bullet$ Encadrant : Romain Martin (PR - Université du Luxembourg)
-    %     \website{http://www.tao.lu}
-    % }
-
-        % \job{Valoria}{Vannes}{56}{Stage de Maîtrise}{Avril--Mai 2004}{%
-        % Évaluation quantitative par implémentation de fichiers logs dans l'application Sibylle, à l'aide du
-        % langage XML ; puis développement d'un utilitaire Java pour analyser les fichiers logs.%\\
-        % %$\bullet$ Encadrants : Franck Poirier (PR - UBS) et Igor Schadle (ATER - UBS)\\
-        % %$\bullet$ Tuteur universitaire : Anna Maria Berardi (MCF - Metz)
-        % \website{http://www-valoria.univ-ubs.fr}
-        % }
-
-        %\job{LORIA}{Vand{\oe}uvre-lès-Nancy}{54}{Vacation CNRS}{Décembre 2003}
-        %{Réalisation de documentations, en anglais, relatives à l'API FeatureStructure développée au LORIA.}
-
-
-       % \job{Juillet-Août 2003}{Stage non obligatoire}{LORIA\footnote{\sf LORIA : laboratoire Lorrain de Recherche en Informatique et ses Applications.} : Vand{\oe}uvre - 54}
-        %{Implémentation d'un analyseur syntaxique de structures de traits en langage XML conforme à la
-        %DTD~ISO~TC~37/SC4. À l'issu de ce stage, mon mémoire a servi de document pour la délégation française
-        %de proposition de norme pour la représentation de structure de traits. Création de pages Web pour la
-        %distribution de l'API FS.\\
-        %$\bullet$ Tuteur : Azim Roussanaly (MCF - Nancy 2)
-        %\website{http://pauillac.inria.fr/atoll/RNIL/FSR.html}
-        %\website{http://www.loria.fr/~azim/FS}
-        %}
-
-        %\job{Juillet-Août 2002}{Stage non obligatoire}{LORIA\footnotemark[3] : Vand{\oe}uvre - 54}
-        %{Extension du formalisme structures de traits aux disjonctions sur valeurs dans l'API FS développée au LORIA
-        %et réécriture d'un analyseur syntaxique à l'aide de l'outil JavaCC.\\
-        %$\bullet$ Tuteur : Azim Roussanaly (MCF - Nancy 2)
-        %\website{http://led.loria.fr/en_outils.php}
-        %}
 \end{description}
 
 \subsection{Conférences}
