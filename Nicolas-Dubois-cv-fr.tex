@@ -52,71 +52,65 @@
 
 % --------------------------- Redéfinition des sections :
 \let\mySection\section
-\renewcommand{\section}[1]{
-\addcontentsline{toc}{section}{#1}%
-\mySection*{#1 \hrulefill}%
+    \renewcommand{\section}[1]{
+    \addcontentsline{toc}{section}{#1}%
+    \mySection*{#1 \hrulefill}%
 }
 
 % --------------------------- Redéfinition des subsections :
 \let\mySubsection\subsection
-\renewcommand{\subsection}[1]{%
-\addcontentsline{toc}{subsection}{#1}%
-\mySubsection*{\hspace{5mm}$\blacktriangleright$ #1}%
+    \renewcommand{\subsection}[1]{%
+    \addcontentsline{toc}{subsection}{#1}%
+    \mySubsection*{\hspace{5mm}› #1}%
 }
 
 % --------------------------- Redéfinition des items :
 \let\myItem\item
-\renewcommand{\item}[1]{%
-%\myItem \textbf{\textsf{#1}}
-\myItem {\titlefont #1}%
+    \renewcommand{\item}[1]{%
+    \myItem {\titlefont #1}%
 }
 
 % --------------------------- Nouvelles commandes :
 % Citer un site web :
-\newcommand{\website}[1]{\ \\\hspace{35mm}{\large \Mundus} \email{#1}}
+\newcommand{\website}[1]{\ \\\hspace{35mm}\email{#1}}
 % Citer un boulot :
-\newcommand{\workItem}[6]{%
-\item{#1}, #2 (#3), #4, #5%
-\begin{quote}%
-\hspace{-7mm}%
-#6
-\end{quote}%
+\newcommand{\job}[6]{%
+    \item{#1}, #2 (#3), #4, #5%
+    \begin{quote}\hspace{-7mm}#6\end{quote}%
 }
 
 % Mise en page de l'état civil :
 \newlength\width%
 \newcommand{\etatCivil}[1] {%
-\width=\textwidth\advance\width by -2cm%
-\advance\width by -.5cm%
-\begin{minipage}[c]{32mm}
-\ifpdf\includegraphics[width=30mm]{images/wo0dyn-circle.jpg}%
-\else \includegraphics[width=30mm]{img/Nicolas-Dubois.eps}\fi%
-\end{minipage}\hfill%
-\begin{minipage}[c]{\width}#1\end{minipage}%
+    \width=\textwidth\advance\width by -2cm%
+    \advance\width by -.5cm%
+    \begin{minipage}[c]{32mm}
+        \includegraphics[width=30mm]{images/wo0dyn-circle.jpg}%
+    \end{minipage}\hfill%
+    \begin{minipage}[c]{\width}#1\end{minipage}%
 }
-
 
 \begin{document}
 
 \sf
 
 \begin{center}
-	{\titlefont\Huge Curriculum Vitæ $\cdot$ Nicolas Dubois}\\
-	{\titlefont\hspace{2cm}36 ans, développeur d'applications web, \email{me@nicolasdubois.com}}
+	{\titlefont\Huge Curriculum Vitæ • Nicolas Dubois}\\
+	{\titlefont\hspace{2cm}@wo0dyn, 36 ans, développeur web\footnote{\sf Les références pour mes différents postes ou les dissertations sont disponibles sur demande.}, expert eCommerce}
 \end{center}
 
 \section{État civil}
 \hspace{10mm}
 \etatCivil{
-
-\begin{tabular}{p{48mm}@{ }p{80mm}}
-    {\bfseries Situation de famille}\dotfill&Divorcé, 2 enfants\\
-    {\bfseries Nationalité}\dotfill&Française\\
-    {\bfseries Date de naissance}\dotfill&15 juin 1979 à Nancy (54)\\
-    {\bfseries Page personnelle}\dotfill&\email{http://nicolasdubois.com}\\
-    {\bfseries Moyens de locomotion}\dotfill&Permis B, véhicule\\
-    {\bfseries Centres d'intérêts}\dotfill&Musique (guitare), sports (basket-ball, golf, ski)\\
-\end{tabular}
+    \begin{tabular}{p{48mm}@{ }p{80mm}}
+        {\bfseries Situation de famille}\dotfill&Divorcé, 2 enfants\\
+        {\bfseries Nationalité}\dotfill&Française\\
+        {\bfseries Date de naissance}\dotfill&15 juin 1979 à Nancy (54)\\
+        {\bfseries Adresse E-mail}\dotfill&\email{nicolas.c.dubois@gmail.com}\\
+        {\bfseries Page personnelle}\dotfill&\email{http://nicolasdubois.com}\\
+        {\bfseries Moyens de locomotion}\dotfill&Permis B, véhicule\\
+        {\bfseries Centres d'intérêts}\dotfill&Musique (guitare), sports (basket-ball, golf, ski)\\
+    \end{tabular}
 }
 
 \section{Expérience professionnelle}
@@ -125,30 +119,35 @@
 
 \begin{description}
 
-    \workItem{AMG Développement | Groupe GPdis}{Eurocentre}{31}{CDI}{depuis Octobre 2009}{
-        Je suis actuellement développeur d'applications web chez AMG Développement, pôle
-        e-commerce de la filiale du groupe GPdis.
-        J'interviens sur les applications internes (Django, symfony, ZF) et également sur
+    \job{Oscaro.com}{télétravail, Gennevilliers}{91}{CDI}{depuis Avril 2014}{
+        Développement du site international d'Oscaro sur une stack Linux, Python (Django), PostgreSQL, Redis, ElasticSearch.
+        \website{http://www.oscaro.be}
+    }
+
+    \job{AMG Développement | Groupe GPdis France}{Eurocentre}{31}{CDI}{Octobre 2009--Avril 2014}{
+        J'ai été développeur principal d'applications web chez AMG Développement, pôle
+        e-commerce de la filiale du groupe GPdis France.
+        Je suis intervenu sur les applications internes (Django, symfony, ZF) et également sur
         la plateforme Magento du groupe (Discounteo, Villatech, Pulsat).
         \website{http://www.villatech.fr}
     }
 
-    \workItem{Ekinos | Groupe Eklas}{Labège}{31}{CDI}{Avril 2009--Octobre 2009}{
+    \job{Ekinos | Groupe Eklas}{Labège}{31}{CDI}{Avril 2009--Octobre 2009}{
         J'ai été développeur/concepteur web et chef de projet junior pour la société Ekinos,
         une agence web spécialisée dans le développement de solutions e-commerce avec la
         plateforme Magento.
         \website{http://www.labsoft.fr}
     }
 
-    \workItem{WaterProof}{Labastide Saint-Pierre}{82}{CDI}{Novembre 2007--Avril 2009}{
+    \job{WaterProof}{Labastide Saint-Pierre}{82}{CDI}{Novembre 2007--Avril 2009}{
         J'ai été développeur/concepteur web pour la société WaterProof, qui développe et commercialise
         l'IDE PHPEdit, où j'ai participé au développement d'applications web à forte valeur ajoutée pour
-        des grands comptes (Spot Image, Dalta, ITM) de la région toulousaine avec le framework symfony\footnote{\sffamily J'ai
+        des grands comptes (Spot Image, Dalta, ITM) de la région toulousaine avec le framework symfony\footnote{\sf J'ai
         suivi la formation symfony dispensée par SensioLabs, créateur du framework.}.
         \website{http://www.waterproof.fr}
     }
 
-    \workItem{MaisMoinsCher.com}{Gaillac}{81}{CDI}{Novembre 2005--Octobre 2007}{
+    \job{MaisMoinsCher.com}{Gaillac}{81}{CDI}{Novembre 2005--Octobre 2007}{
         J'ai été développeur web principal pour le e-commerçant MaisMoinsCher.com
         où j'ai développé :\\
             \hspace*{1cm}- une application intranet pour la gestion du catalogue de la boutique ;\\
@@ -158,27 +157,27 @@
         \website{http://www.maismoinscher.com}
     }
 
-    \workItem{Les cahiers de la cypriolette}{Commecy}{55}{CDD}{Août 2005}{
+    \job{Les cahiers de la cypriolette}{Commecy}{55}{CDD}{Août 2005}{
         Développement de scripts pour interfacer une base de données MySQL avec une application Flash.
         \website{http://www.cypriolette.com}
     }
 
-    \workItem{Laboratoire Leibniz--IMAG}{Grenoble}{38}{Stage Master de Recherche}{Février--Juillet 2005}{
+    \job{Laboratoire Leibniz--IMAG}{Grenoble}{38}{Stage Master de Recherche}{Février--Juillet 2005}{
         Développement et intégration d'un module émotionnel sur une plateforme d'agent conversationnel de recommandation.
         Modélisation en UML et implémentation en langage Java.%\\
         %$\bullet$ Directrice : Sylvie Pesty (PR - Université Pierre Mendès-France)
         \website{http://magma.imag.fr}
     }
 
-    \workItem{Université du Luxembourg}{Walferdange}{Luxembourg}{Stage non obligatoire}{Juillet 2004}{
-        Réalisation de formats d'items dynamiques déployés par la plateforme de testing assisté
-        par ordinateur au sein de l'équipe de recherche EMACS%\footnote{\sf EMACS: Educational
-        %Measurement and Applied Cognitive Science}.%\\
-        %$\bullet$ Encadrant : Romain Martin (PR - Université du Luxembourg)
-        \website{http://www.tao.lu}
-    }
+    % \job{Université du Luxembourg}{Walferdange}{Luxembourg}{Stage non obligatoire}{Juillet 2004}{
+    %     Réalisation de formats d'items dynamiques déployés par la plateforme de testing assisté
+    %     par ordinateur au sein de l'équipe de recherche EMACS%\footnote{\sf EMACS: Educational
+    %     %Measurement and Applied Cognitive Science}.%\\
+    %     %$\bullet$ Encadrant : Romain Martin (PR - Université du Luxembourg)
+    %     \website{http://www.tao.lu}
+    % }
 
-        % \workItem{Valoria}{Vannes}{56}{Stage de Maîtrise}{Avril--Mai 2004}{%
+        % \job{Valoria}{Vannes}{56}{Stage de Maîtrise}{Avril--Mai 2004}{%
         % Évaluation quantitative par implémentation de fichiers logs dans l'application Sibylle, à l'aide du
         % langage XML ; puis développement d'un utilitaire Java pour analyser les fichiers logs.%\\
         % %$\bullet$ Encadrants : Franck Poirier (PR - UBS) et Igor Schadle (ATER - UBS)\\
@@ -186,11 +185,11 @@
         % \website{http://www-valoria.univ-ubs.fr}
         % }
 
-        %\workItem{LORIA}{Vand{\oe}uvre-lès-Nancy}{54}{Vacation CNRS}{Décembre 2003}
+        %\job{LORIA}{Vand{\oe}uvre-lès-Nancy}{54}{Vacation CNRS}{Décembre 2003}
         %{Réalisation de documentations, en anglais, relatives à l'API FeatureStructure développée au LORIA.}
 
 
-       % \workItem{Juillet-Août 2003}{Stage non obligatoire}{LORIA\footnote{\sf LORIA : laboratoire Lorrain de Recherche en Informatique et ses Applications.} : Vand{\oe}uvre - 54}
+       % \job{Juillet-Août 2003}{Stage non obligatoire}{LORIA\footnote{\sf LORIA : laboratoire Lorrain de Recherche en Informatique et ses Applications.} : Vand{\oe}uvre - 54}
         %{Implémentation d'un analyseur syntaxique de structures de traits en langage XML conforme à la
         %DTD~ISO~TC~37/SC4. À l'issu de ce stage, mon mémoire a servi de document pour la délégation française
         %de proposition de norme pour la représentation de structure de traits. Création de pages Web pour la
@@ -200,7 +199,7 @@
         %\website{http://www.loria.fr/~azim/FS}
         %}
 
-        %\workItem{Juillet-Août 2002}{Stage non obligatoire}{LORIA\footnotemark[3] : Vand{\oe}uvre - 54}
+        %\job{Juillet-Août 2002}{Stage non obligatoire}{LORIA\footnotemark[3] : Vand{\oe}uvre - 54}
         %{Extension du formalisme structures de traits aux disjonctions sur valeurs dans l'API FS développée au LORIA
         %et réécriture d'un analyseur syntaxique à l'aide de l'outil JavaCC.\\
         %$\bullet$ Tuteur : Azim Roussanaly (MCF - Nancy 2)
@@ -208,16 +207,38 @@
         %}
 \end{description}
 
-\subsection{Enseignement}
+\subsection{Conférences}
+
 \begin{description}
-        \workItem{Vidéoscop de Nancy}{Nancy}{54}{Vacation}{Mars--Juin 2003}{
+        \job{SudWeb (1\iere{} édition)}{Nîmes}{30}{LT}{Mai 2011}{
+            Vers des langues de programmation. • \email{http://sudweb.fr/2011/}
+        }
+
+        \job{Pytong}{Toulon}{83}{LT}{Juin 2013}{
+            À quoi ressemblerait mon python ? • \email{http://2013.pytong.org}
+        }
+
+        \job{DjangoCong}{Clermont-Ferrant}{63}{Conférence}{Juin 2015}{
+            Surveiller son application Django avec Sentry • \email{http://rencontres.django-fr.org/2015/}
+        }
+
+        \job{DjangoCong}{Clermont-Ferrant}{63}{LT}{Juin 2015}{
+            Invoke • Exécuter ses tâches en python • \email{http://rencontres.django-fr.org/2015/}
+        }
+\end{description}
+
+
+\subsection{Enseignement}
+
+\begin{description}
+        \job{Vidéoscop de Nancy}{Nancy}{54}{Vacation}{Mars--Juin 2003}{
             Médiatisation du cours d'Interface Homme-Machine de Kamel Smaïli (PR - Nancy 2) pour le projet e-miage.
             Réalisation de supports multimédia et d'expériences à l'aide des outils Flash et PHP.
             \website{http://www.e-miage.org}
         }
 
-        \workItem{Université Nancy 2}{Nancy}{54}{Tuteur}{Février--Juin 2002}{
-            Tuteur en informatique à la faculté d'AES -- Initiation aux outils de bureautique Word et Excel.
+        \job{Université Nancy 2}{Nancy}{54}{Tuteur}{Février--Juin 2002}{
+            Tuteur en informatique à la faculté d'AES : initiation aux outils de bureautique.
             \website{http://www.univ-nancy2.fr/VIDEOSCOP}
         }
 \end{description}
@@ -227,19 +248,20 @@
 \subsection{Diplômes}
 
 \begin{description}
-	\item{2004--2005 : Master de Recherche \og{}Information, Cognition et Apprentissages\fg{}}, spécialité Sciences Cognitives
-	obtenu à l'Institut National Polytechnique de Grenoble, mention AB
+    \item{2004--2005 : Master de Recherche « Information, Cognition et Apprentissages »}, %
+        spécialité Sciences Cognitives obtenu à l'Institut National Polytechnique de Grenoble, mention~AB
         \begin{quote}
-                \textbf{Mémoire} : \emph{modélisation informatique de la prise de décision à base d'émotions.}
+            \textbf{Mémoire}\footnote{\sf Mémoire publié aux Éditions universitaires européennes, ISBN 978-613-1-59576-9.} :%
+                \emph{modélisation informatique de la prise de décision à base d'émotions.}
         \end{quote}
-        \item{2003-2004 : Maîtrise de Sciences Cognitives} (spécialité Informatique) obtenue à l'Université Nancy 2, mention AB
+    \item{2003--2004 : Maîtrise de Sciences Cognitives} obtenue à l'Université Nancy 2, mention~AB
         \begin{quote}
-                \textbf{Travail d'Études et de Recherche} :
-                \emph{état de l'art des systèmes de communication assistée par ordinateur.}%, point de vue ergonomie cognitive et ingénierie des langues}
+        \textbf{Travail d'Études et de Recherche} :
+            \emph{état de l'art des systèmes de communication assistée par ordinateur, point de vue ergonomie cognitive et ingénierie des langues}
         \end{quote}
-        \item{2002-2003 : Licence de Sciences Cognitives} obtenue à l'Université Nancy 2
-        \item{2000-2001 : DEUG MIAGE} obtenu à l'IUP MIAGE\footnote{\sffamily IUP MIAGE : Institut Universitaire Professionnalisé en Méthodes Informatiques Appliquées à la Gestion des entreprises.} de l'Université Nancy 2
-        \item{1998-1999 : Baccalauréat Scientifique} (spécialité Physique-Chimie) obtenu au Lycée Henri Poincaré de Nancy
+    \item{2002--2003 : Licence de Sciences Cognitives} obtenue à l'Université Nancy 2
+    \item{2000--2001 : DEUG MIAGE} obtenu à l'IUP MIAGE\footnote{\sf IUP MIAGE : Institut Universitaire Professionnalisé en Méthodes Informatiques Appliquées à la Gestion des entreprises.} de l'Université Nancy 2
+    \item{1998--1999 : Baccalauréat Scientifique} obtenu au Lycée Henri Poincaré de Nancy
 \end{description}
 
 \section{Compétences}
@@ -247,15 +269,16 @@
 \subsection{Compétences informatiques}
 
 \begin{description}
-        \item{Environnements : }\textbf{GNU/Linux} (Ubuntu, Debian), Unix (Solaris, SunOS), MacOSX ;
-        \item{Langages : }\textbf{Python}, Unix Shells (bash/zsh), Java, {\LaTeX}, XML, XSL ;
-        \item{Développement Web : }\textbf{Python}, \textbf{HTML} 5, (S)\textbf{CSS}, JavaScript, PHP ;
-        \item{Bases de Données : }\textbf{PostgreSQL}, MySQL, SQLite ;
-	    \item{Applications/Frameworks : }\textbf{Django}, flask, symfony (1.x), Magento.
+    \item{Environnements : }\textbf{GNU/Linux} (Ubuntu, Debian), Unix (Solaris, SunOS), MacOS X ;
+    \item{Langages : }\textbf{Python}, Unix Shells (bash/zsh), Java, {\LaTeX}, XML, XSL ;
+    \item{Développement Web : }\textbf{Python}, \textbf{HTML} 5, (S)\textbf{CSS}, JavaScript, PHP ;
+    \item{Bases de Données : }\textbf{PostgreSQL}, MySQL, SQLite ;
+    \item{Applications/Frameworks : }\textbf{Django}, flask, symfony (1.x), Magento.
+    \item{Notions : }ElasticSearch, Redis, React.js.
 \end{description}
 
 \subsection{Compétences linguistiques}
 
-\textbf{Français : }langue maternelle \textopenbullet{} \textbf{Anglais : }lu, écrit (technique) \textopenbullet{} \textbf{Espagnol : }notions.
+\textbf{Français : }langue maternelle • \textbf{Anglais : }lu, écrit, parlé • \textbf{Espagnol : }notions.
 
 \end{document}
