@@ -1,0 +1,313 @@
+
+%
+% Curriculum Vitæ/Résumé
+% Nicolas Dubois <nicolas.c.dubois@gmail.com>
+% http://nicolasdubois.com • @wo0dyn
+%
+
+\documentclass[a4paper, 11pt]{scrartcl}
+
+% --------------------------- Packages :
+\usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}
+% \usepackage{lmodern, aeguill, xspace}
+\usepackage{aeguill, xspace}
+\usepackage[american, francais]{babel}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts, amssymb, marvosym, textcomp}
+\usepackage{vmargin}
+\usepackage{url}
+
+\urlstyle{sf}
+
+\newcommand\email{\begingroup\Url}
+
+\usepackage{ifpdf}
+\ifpdf
+	\usepackage[pdftex]{xcolor}
+	\usepackage[pdftex, colorlinks,%
+		pdfpagelayout=SinglePage,%
+		pdftitle={Curriculum Vitæ},%
+		pdfauthor={Nicolas Dubois},%
+		pagebackref=true,%
+		pdfnewwindow=true,%
+		bookmarksnumbered=true,%
+		pdfstartview={FitH},
+		urlcolor=black,
+		linkcolor=black,
+		bookmarksopen]%
+	{hyperref}
+\fi
+
+\pagestyle{empty}
+% \renewcommand{\headrulewidth}{0pt}
+% \cfoot{}
+% note : pour ne pas avoir les numéros de page.
+
+\setmarginsrb
+        {10mm} % est la marge gauche
+        {10mm} % est la marge en haut
+        {10mm} % est la marge droite
+        {10mm} % est la marge en bas
+        {00mm} % fixe la hauteur de l'entête
+        {00mm} % fixe la distance entre l'entête et le texte
+        {00mm} % fixe la hauteur du pied de page
+        {00mm} % fixe la distance entre le texte et le pied de page
+% note : utilisation du package vmargin.
+
+% % % % % --------------------------- Redéfinition des sections :
+% % % % \let\mySection\section
+% % % % \renewcommand{\section}[1]{%
+% % % % \addcontentsline{toc}{section}{#1}%
+% % % % \mySection*{\textsf{#1 \hrulefill}}%
+% % % % }
+% % % %
+% % % % % --------------------------- Redéfinition des subsections :
+% % % % \let\mySubsection\subsection
+% % % % \renewcommand{\subsection}[1]{%
+% % % % \addcontentsline{toc}{subsection}{#1}%
+% % % % \mySubsection*{\hspace{5mm}$\blacklozenge$\textsf{#1}}%
+% % % % }
+
+% --------------------------- Redéfinition des sections :
+\let\mySection\section
+\renewcommand{\section}[1]{
+\addcontentsline{toc}{section}{#1}%
+\mySection*{#1 \hrulefill}%
+}
+
+% --------------------------- Redéfinition des subsections :
+\let\mySubsection\subsection
+\renewcommand{\subsection}[1]{%
+\addcontentsline{toc}{subsection}{#1}%
+\mySubsection*{\hspace{5mm}$\blacktriangleright$ #1}%
+}
+
+% --------------------------- Redéfinition des items :
+\let\myItem\item
+\renewcommand{\item}[1]{%
+%\myItem \textbf{\textsf{#1}}
+\myItem {\titlefont #1}%
+}
+
+% % --------------------------- Redéfinition des footnotetexts :
+% \let\myFootnotetext\footnotetext
+% \renewcommand{\footnotetext}[2]{%
+% \myFootnotetext[#1]{\textsf{#2}}%
+% }
+
+
+% --------------------------- Nouvelles commandes :
+% Citer un site web :
+\newcommand{\website}[1]{\ \\\hspace{35mm}{\large \Mundus} \email{#1}}
+% Citer un boulot :
+\newcommand{\workItem}[6]{%
+\item{#1}, #2 (#3), #4, #5%
+\begin{quote}%
+\hspace{-7mm}%
+%\emph{#6}%
+#6
+\end{quote}%
+}
+% Mise en page de l'état civil :
+\newlength\width%
+\newcommand{\etatCivil}[1] {%
+\width=\textwidth\advance\width by -2cm%
+\advance\width by -.5cm%
+\begin{minipage}[c]{32mm}
+\ifpdf\includegraphics[width=30mm]{images/wo0dyn-circle.jpg}%
+\else \includegraphics[width=30mm]{img/Nicolas-Dubois.eps}\fi%
+\end{minipage}\hfill%
+\begin{minipage}[c]{\width}#1\end{minipage}%
+}
+
+
+\begin{document}
+
+\sf
+
+% \fontfamily{cmss} \selectfont
+
+% \maketitle
+
+\begin{center}
+	{\titlefont\Huge Curriculum Vitæ $\cdot$ Nicolas Dubois}\\
+	{\titlefont\hspace{2cm}36 ans, développeur d'applications web, \email{me@nicolasdubois.com}}
+\end{center}
+
+\section{État civil}
+\hspace{10mm}
+\etatCivil{
+
+\begin{tabular}{p{48mm}@{ }p{80mm}}
+{\bfseries Situation de famille}\dotfill&Divorcé, 2 enfants\\
+{\bfseries Nationalité}\dotfill&Française\\
+{\bfseries Date de naissance}\dotfill&15 juin 1979 à Nancy (54)\\
+%{\bfseries Coordonnées}\dotfill&455 route de Vignarnaud{} - 82000 MONTAUBAN\\
+%	&Tél. $\mathsf{06\cdot15\cdot31\cdot64\cdot04}$\\
+{\bfseries Page personnelle}\dotfill&\email{http://nicolasdubois.com}\\
+{\bfseries Moyens de locomotion}\dotfill&Permis B, véhicule\\
+{\bfseries Centres d'intérêts}\dotfill&Musique (guitare), sports (basket-ball, golf, ski)\\
+\end{tabular}
+}
+
+\section{Expérience professionnelle}
+
+\subsection{Emplois en informatique}
+
+\begin{description}
+
+    \workItem{AMG Développement | Groupe GPdis}{Eurocentre}{31}{CDI}{depuis Octobre 2009}{
+        Je suis actuellement développeur d'applications web chez AMG Développement, pôle
+        e-commerce de la filiale du groupe GPdis.
+        J'interviens sur les applications internes (Django, symfony, ZF) et également sur
+        la plateforme Magento du groupe (Discounteo, Villatech, Pulsat).
+        \website{http://www.villatech.fr}
+    }
+
+    \workItem{Ekinos | Groupe Eklas}{Labège}{31}{CDI}{Avril 2009--Octobre 2009}{
+        J'ai été développeur/concepteur web et chef de projet junior pour la société Ekinos,
+        une agence web spécialisée dans le développement de solutions e-commerce avec la
+        plateforme Magento.
+        \website{http://www.labsoft.fr}
+    }
+
+    \workItem{WaterProof}{Labastide Saint-Pierre}{82}{CDI}{Novembre 2007--Avril 2009}{
+        J'ai été développeur/concepteur web pour la société WaterProof, qui développe et commercialise
+        l'IDE PHPEdit, où j'ai participé au développement d'applications web à forte valeur ajoutée pour
+        des grands comptes (Spot Image, Dalta, ITM) de la région toulousaine avec le framework symfony\footnote{\sffamily J'ai
+        suivi la formation symfony dispensée par SensioLabs, créateur du framework.}.
+        \website{http://www.waterproof.fr}
+    }
+
+    \workItem{MaisMoinsCher.com}{Gaillac}{81}{CDI}{Novembre 2005--Octobre 2007}{
+        J'ai été développeur web principal pour le e-commerçant MaisMoinsCher.com
+        où j'ai développé :\\
+            \hspace*{1cm}- une application intranet pour la gestion du catalogue de la boutique ;\\
+            \hspace*{1cm}- plusieurs modules dans la partie backoffice dont notamment un gestionnaire de stock ;\\
+            \hspace*{1cm}- un module de paiement Sofinco pour la partie frontoffice ;\\
+            \hspace*{1cm}- un pricebot (outil de veille concurrentielle) pour la gestion des fournisseurs.
+        \website{http://www.maismoinscher.com}
+    }
+
+    \workItem{Les cahiers de la cypriolette}{Commecy}{55}{CDD}{Août 2005}{
+        Développement de scripts pour interfacer une base de données MySQL avec une application Flash.
+        \website{http://www.cypriolette.com}
+    }
+
+    \workItem{Laboratoire Leibniz--IMAG}{Grenoble}{38}{Stage Master de Recherche}{Février--Juillet 2005}{
+        Développement et intégration d'un module émotionnel sur une plateforme d'agent conversationnel de recommandation.
+        Modélisation en UML et implémentation en langage Java.%\\
+        %$\bullet$ Directrice : Sylvie Pesty (PR - Université Pierre Mendès-France)
+        \website{http://magma.imag.fr}
+    }
+
+    \workItem{Université du Luxembourg}{Walferdange}{Luxembourg}{Stage non obligatoire}{Juillet 2004}{
+        Réalisation de formats d'items dynamiques déployés par la plateforme de testing assisté
+        par ordinateur au sein de l'équipe de recherche EMACS%\footnote{\sf EMACS: Educational
+        %Measurement and Applied Cognitive Science}.%\\
+        %$\bullet$ Encadrant : Romain Martin (PR - Université du Luxembourg)
+        \website{http://www.tao.lu}
+    }
+
+        % \workItem{Valoria}{Vannes}{56}{Stage de Maîtrise}{Avril--Mai 2004}{%
+        % Évaluation quantitative par implémentation de fichiers logs dans l'application Sibylle, à l'aide du
+        % langage XML ; puis développement d'un utilitaire Java pour analyser les fichiers logs.%\\
+        % %$\bullet$ Encadrants : Franck Poirier (PR - UBS) et Igor Schadle (ATER - UBS)\\
+        % %$\bullet$ Tuteur universitaire : Anna Maria Berardi (MCF - Metz)
+        % \website{http://www-valoria.univ-ubs.fr}
+        % }
+
+        %\workItem{LORIA}{Vand{\oe}uvre-lès-Nancy}{54}{Vacation CNRS}{Décembre 2003}
+        %{Réalisation de documentations, en anglais, relatives à l'API FeatureStructure développée au LORIA.}
+
+
+       % \workItem{Juillet-Août 2003}{Stage non obligatoire}{LORIA\footnote{\sf LORIA : laboratoire Lorrain de Recherche en Informatique et ses Applications.} : Vand{\oe}uvre - 54}
+        %{Implémentation d'un analyseur syntaxique de structures de traits en langage XML conforme à la
+        %DTD~ISO~TC~37/SC4. À l'issu de ce stage, mon mémoire a servi de document pour la délégation française
+        %de proposition de norme pour la représentation de structure de traits. Création de pages Web pour la
+        %distribution de l'API FS.\\
+        %$\bullet$ Tuteur : Azim Roussanaly (MCF - Nancy 2)
+        %\website{http://pauillac.inria.fr/atoll/RNIL/FSR.html}
+        %\website{http://www.loria.fr/~azim/FS}
+        %}
+
+        %\workItem{Juillet-Août 2002}{Stage non obligatoire}{LORIA\footnotemark[3] : Vand{\oe}uvre - 54}
+        %{Extension du formalisme structures de traits aux disjonctions sur valeurs dans l'API FS développée au LORIA
+        %et réécriture d'un analyseur syntaxique à l'aide de l'outil JavaCC.\\
+        %$\bullet$ Tuteur : Azim Roussanaly (MCF - Nancy 2)
+        %\website{http://led.loria.fr/en_outils.php}
+        %}
+\end{description}
+
+%\begin{flushright}\begin{scriptsize}
+%J'ai d'autres stages à mon actif, notamment au LORIA.\\\hspace*{-5mm}
+%Le nom des encadrants et les dissertations sont disponibles sur simple demande.
+%\end{scriptsize}\end{flushright}
+
+\subsection{Enseignement}
+\begin{description}
+        \workItem{Vidéoscop de Nancy}{Nancy}{54}{Vacation}{Mars--Juin 2003}{
+            Médiatisation du cours d'Interface Homme-Machine de Kamel Smaïli (PR - Nancy 2) pour le projet e-miage.
+            Réalisation de supports multimédia et d'expériences à l'aide des outils Flash et PHP.
+            \website{http://www.e-miage.org}
+        }
+
+        \workItem{Université Nancy 2}{Nancy}{54}{Tuteur}{Février--Juin 2002}{
+            Tuteur en informatique à la faculté d'AES -- Initiation aux outils de bureautique Word et Excel.
+            \website{http://www.univ-nancy2.fr/VIDEOSCOP}
+        }
+\end{description}
+
+% \subsection{Développement Web}
+% \begin{description}
+% 	\workItem{Mekrom Engineering}{Lugano}{Suisse}{Freelance}{Septembre--Octobre 2005}
+%         {Développement d'un site dynamique multilingue avec interface de maintenance.
+%         \website{http://www.mekrom.eu}}
+%         \workItem{MJC Lorraine}{Vando{\oe}uvre-lès-Nancy}{54}{Freelance}{Août--Septembre 2004}
+%         {Mise en place d'une plateforme PHP/MySQL avec interface de maintenance.
+%         \website{http://www.mjclorraine.com}}
+%         \workItem{Subtran/Technotol/Tecnolak}{Pompey}{54}{Freelance}{Septembre--Octobre 2003}
+%         {Développement de sites dynamiques multilingues avec interface de maintenance pour la société Subtran et
+%         ses deux filiales Technotol et Tecnolak.
+%         \website{http://www.{subtran, technotol, tecnolak}.com}}
+% \end{description}
+
+\section{Formation}
+
+\subsection{Diplômes}
+
+\begin{description}
+	\item{2004--2005 : Master de Recherche \og{}Information, Cognition et Apprentissages\fg{}}, spécialité Sciences Cognitives
+	obtenu à l'Institut National Polytechnique de Grenoble, mention AB
+        \begin{quote}
+                \textbf{Mémoire} : \emph{modélisation informatique de la prise de décision à base d'émotions.}
+        \end{quote}
+        \item{2003-2004 : Maîtrise de Sciences Cognitives} (spécialité Informatique) obtenue à l'Université Nancy 2, mention AB
+        \begin{quote}
+                \textbf{Travail d'Études et de Recherche} :
+                \emph{état de l'art des systèmes de communication assistée par ordinateur.}%, point de vue ergonomie cognitive et ingénierie des langues}
+        \end{quote}
+        \item{2002-2003 : Licence de Sciences Cognitives} obtenue à l'Université Nancy 2
+        \item{2000-2001 : DEUG MIAGE} obtenu à l'IUP MIAGE\footnote{\sffamily IUP MIAGE : Institut Universitaire Professionnalisé en Méthodes Informatiques Appliquées à la Gestion des entreprises.} de l'Université Nancy 2
+        \item{1998-1999 : Baccalauréat Scientifique} (spécialité Physique-Chimie) obtenu au Lycée Henri Poincaré de Nancy
+\end{description}
+
+\section{Compétences}
+
+\subsection{Compétences informatiques}
+
+\begin{description}
+        \item{Environnements : }\textbf{GNU/Linux} (Ubuntu, Debian), Unix (Solaris, SunOS), MacOSX ;
+        \item{Langages : }\textbf{Python}, Unix Shells (bash/zsh), Java, {\LaTeX}, XML, XSL ;
+        \item{Développement Web : }\textbf{Python}, \textbf{HTML} 5, (S)\textbf{CSS}, JavaScript, PHP ;
+        \item{Bases de Données : }\textbf{PostgreSQL}, MySQL, SQLite ;
+        % \item{Serveurs : }Apache/nginx, SSH, CVS/SVN, SaMBa ;
+	    \item{Applications/Frameworks : }\textbf{Django}, flask, symfony (1.x), Magento.
+\end{description}
+
+\subsection{Compétences linguistiques}
+
+\textbf{Français : }langue maternelle \textopenbullet{} \textbf{Anglais : }lu, écrit (technique) \textopenbullet{} \textbf{Espagnol : }notions.
+
+\end{document}
