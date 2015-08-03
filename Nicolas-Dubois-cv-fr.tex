@@ -9,8 +9,6 @@
 
 % --------------------------- Packages :
 \usepackage[utf8]{inputenc}
-% \usepackage[T1]{fontenc}
-% \usepackage{lmodern, aeguill, xspace}
 \usepackage{aeguill, xspace}
 \usepackage[american, francais]{babel}
 \usepackage{graphicx, fancyhdr}
@@ -40,9 +38,6 @@
 \fi
 
 \pagestyle{empty}
-% \renewcommand{\headrulewidth}{0pt}
-% \cfoot{}
-% note : pour ne pas avoir les numéros de page.
 
 \setmarginsrb
         {10mm} % est la marge gauche
@@ -54,20 +49,6 @@
         {00mm} % fixe la hauteur du pied de page
         {00mm} % fixe la distance entre le texte et le pied de page
 % note : utilisation du package vmargin.
-
-% % % % % --------------------------- Redéfinition des sections :
-% % % % \let\mySection\section
-% % % % \renewcommand{\section}[1]{%
-% % % % \addcontentsline{toc}{section}{#1}%
-% % % % \mySection*{\textsf{#1 \hrulefill}}%
-% % % % }
-% % % %
-% % % % % --------------------------- Redéfinition des subsections :
-% % % % \let\mySubsection\subsection
-% % % % \renewcommand{\subsection}[1]{%
-% % % % \addcontentsline{toc}{subsection}{#1}%
-% % % % \mySubsection*{\hspace{5mm}$\blacklozenge$\textsf{#1}}%
-% % % % }
 
 % --------------------------- Redéfinition des sections :
 \let\mySection\section
@@ -90,13 +71,6 @@
 \myItem {\titlefont #1}%
 }
 
-% % --------------------------- Redéfinition des footnotetexts :
-% \let\myFootnotetext\footnotetext
-% \renewcommand{\footnotetext}[2]{%
-% \myFootnotetext[#1]{\textsf{#2}}%
-% }
-
-
 % --------------------------- Nouvelles commandes :
 % Citer un site web :
 \newcommand{\website}[1]{\ \\\hspace{35mm}{\large \Mundus} \email{#1}}
@@ -105,10 +79,10 @@
 \item{#1}, #2 (#3), #4, #5%
 \begin{quote}%
 \hspace{-7mm}%
-%\emph{#6}%
 #6
 \end{quote}%
 }
+
 % Mise en page de l'état civil :
 \newlength\width%
 \newcommand{\etatCivil}[1] {%
@@ -126,10 +100,6 @@
 
 \sf
 
-% \fontfamily{cmss} \selectfont
-
-% \maketitle
-
 \begin{center}
 	{\titlefont\Huge Curriculum Vitæ $\cdot$ Nicolas Dubois}\\
 	{\titlefont\hspace{2cm}36 ans, développeur d'applications web, \email{me@nicolasdubois.com}}
@@ -140,14 +110,12 @@
 \etatCivil{
 
 \begin{tabular}{p{48mm}@{ }p{80mm}}
-{\bfseries Situation de famille}\dotfill&Divorcé, 2 enfants\\
-{\bfseries Nationalité}\dotfill&Française\\
-{\bfseries Date de naissance}\dotfill&15 juin 1979 à Nancy (54)\\
-%{\bfseries Coordonnées}\dotfill&455 route de Vignarnaud{} - 82000 MONTAUBAN\\
-%	&Tél. $\mathsf{06\cdot15\cdot31\cdot64\cdot04}$\\
-{\bfseries Page personnelle}\dotfill&\email{http://nicolasdubois.com}\\
-{\bfseries Moyens de locomotion}\dotfill&Permis B, véhicule\\
-{\bfseries Centres d'intérêts}\dotfill&Musique (guitare), sports (basket-ball, golf, ski)\\
+    {\bfseries Situation de famille}\dotfill&Divorcé, 2 enfants\\
+    {\bfseries Nationalité}\dotfill&Française\\
+    {\bfseries Date de naissance}\dotfill&15 juin 1979 à Nancy (54)\\
+    {\bfseries Page personnelle}\dotfill&\email{http://nicolasdubois.com}\\
+    {\bfseries Moyens de locomotion}\dotfill&Permis B, véhicule\\
+    {\bfseries Centres d'intérêts}\dotfill&Musique (guitare), sports (basket-ball, golf, ski)\\
 \end{tabular}
 }
 
@@ -240,11 +208,6 @@
         %}
 \end{description}
 
-%\begin{flushright}\begin{scriptsize}
-%J'ai d'autres stages à mon actif, notamment au LORIA.\\\hspace*{-5mm}
-%Le nom des encadrants et les dissertations sont disponibles sur simple demande.
-%\end{scriptsize}\end{flushright}
-
 \subsection{Enseignement}
 \begin{description}
         \workItem{Vidéoscop de Nancy}{Nancy}{54}{Vacation}{Mars--Juin 2003}{
@@ -258,20 +221,6 @@
             \website{http://www.univ-nancy2.fr/VIDEOSCOP}
         }
 \end{description}
-
-% \subsection{Développement Web}
-% \begin{description}
-% 	\workItem{Mekrom Engineering}{Lugano}{Suisse}{Freelance}{Septembre--Octobre 2005}
-%         {Développement d'un site dynamique multilingue avec interface de maintenance.
-%         \website{http://www.mekrom.eu}}
-%         \workItem{MJC Lorraine}{Vando{\oe}uvre-lès-Nancy}{54}{Freelance}{Août--Septembre 2004}
-%         {Mise en place d'une plateforme PHP/MySQL avec interface de maintenance.
-%         \website{http://www.mjclorraine.com}}
-%         \workItem{Subtran/Technotol/Tecnolak}{Pompey}{54}{Freelance}{Septembre--Octobre 2003}
-%         {Développement de sites dynamiques multilingues avec interface de maintenance pour la société Subtran et
-%         ses deux filiales Technotol et Tecnolak.
-%         \website{http://www.{subtran, technotol, tecnolak}.com}}
-% \end{description}
 
 \section{Formation}
 
@@ -302,7 +251,6 @@
         \item{Langages : }\textbf{Python}, Unix Shells (bash/zsh), Java, {\LaTeX}, XML, XSL ;
         \item{Développement Web : }\textbf{Python}, \textbf{HTML} 5, (S)\textbf{CSS}, JavaScript, PHP ;
         \item{Bases de Données : }\textbf{PostgreSQL}, MySQL, SQLite ;
-        % \item{Serveurs : }Apache/nginx, SSH, CVS/SVN, SaMBa ;
 	    \item{Applications/Frameworks : }\textbf{Django}, flask, symfony (1.x), Magento.
 \end{description}
 
