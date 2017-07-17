@@ -1,7 +1,7 @@
 from glob import glob
 import os
 
-from invoke import ctask as task
+from invoke import task
 
 
 BASE = 'Nicolas-Dubois-cv-fr.{ext}'
