@@ -12,190 +12,221 @@
 
 \documentclass[a4paper, 11pt]{scrartcl}
 
-% Packages:
-\usepackage[american, francais]{babel}
+\usepackage[american, french]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[pdftex]{xcolor}
 
-\usepackage{fancyhdr}
+\usepackage{aeguill}
+\usepackage{fontawesome}
 \usepackage{graphicx}
 \usepackage{url}
-\usepackage{xspace}
+\usepackage{vmargin}
+\usepackage{xifthen}
 
-\usepackage{packages/vendor/aeguill}
-\usepackage{packages/vendor/vmargin}
+\usepackage[
+  backend=bibtex,
+  sorting=ydnt,   % Sort by year (descending), name, title
+  style=numeric,  % numeric
+]{biblatex}
 
+\usepackage[pdftex, colorlinks,
+  pdfpagelayout=SinglePage,
+  pdftitle={Curriculum Vitae},
+  pdfauthor={Nicolas Dubois, @wo0dyn},
+  pagebackref=false,
+  pdfnewwindow=true,
+  bookmarksnumbered=true,
+  pdfstartview={FitH},
+  urlcolor=black,
+  linkcolor=black,
+  bookmarksopen
+]{hyperref}
+
+\bibliography{publications.bib}
 \urlstyle{sf}
-
-\usepackage[pdftex, colorlinks,%
-    pdfpagelayout=SinglePage,%
-    pdftitle={Curriculum Vitæ — Résumé},%
-    pdfauthor={Nicolas Dubois, @wo0dyn},%
-    pagebackref=true,%
-    pdfnewwindow=true,%
-    bookmarksnumbered=true,%
-    pdfstartview={FitH},
-    urlcolor=black,
-    linkcolor=black,
-    bookmarksopen]%
-{hyperref}
-
 \pagestyle{empty}
 \setmarginsrb
-    {10mm} % left margin
-    {10mm} % top margin
-    {10mm} % right margin
-    {10mm} % bottom margin
-    {00mm} % head height
-    {00mm} % head sep
-    {00mm} % foot height
-    {00mm} % foot skip
+  {10mm} % left margin
+  {10mm} % top margin
+  {10mm} % right margin
+  {10mm} % bottom margin
+  {00mm} % head height
+  {00mm} % head sep
+  {00mm} % foot height
+  {00mm} % foot skip
 
 % Refine sections:
-\let\mySection\section
-    \renewcommand{\section}[1]{
-    \addcontentsline{toc}{section}{#1}%
-    \mySection*{#1 \hrulefill}%
+\let\customsection\section
+  \renewcommand{\section}[1]{
+  \addcontentsline{toc}{section}{#1}
+  \customsection*{#1 \hrulefill}
 }
 
 % Redefine subsections:
-\let\mySubsection\subsection
-    \renewcommand{\subsection}[1]{%
-    \addcontentsline{toc}{subsection}{#1}%
-    \mySubsection*{\hspace{5mm}› #1}%
+\let\customsubsection\subsection
+  \renewcommand{\subsection}[1]{
+  \addcontentsline{toc}{subsection}{#1}
+  \customsubsection*{\hspace{5mm}› #1}
 }
 
 % Redefine items:
-\let\myItem\item
-    \renewcommand{\item}[1]{%
-    \myItem {\titlefont #1}%
+\let\customitem\item
+  \renewcommand{\item}[1]{
+  \customitem {\titlefont #1}
 }
 
+\definecolor{job-color}{gray}{0.4}
+
 % Custom commands:
-\newcommand\email{\begingroup\Url}
-\newcommand{\website}[1]{\ \\\hspace{35mm}\email{#1}}
-\newcommand{\job}[6]{%
-    \item{#1}, #2 (#3), #4, #5%
-    \begin{quote}\hspace{-7mm}#6\end{quote}%
+\newcommand{\job}[8]{
+  % 1: Title
+  % 2: Company
+  % 3: Location
+  % 4: Contrat
+  % 5: Started on
+  % 6: Finished on
+  % 7: Duration
+  % 8: Description
+  \item{#1}\\
+  \textcolor{job-color}{
+    \faInstitution{} #2 – #4 \faMapMarker{} #3\\
+    \faCalendar{} #5 – #6 · #7
+  }
+  \ifthenelse{\isempty{#8}}                    % if
+    {}                                         % then
+    {\begin{quote}\hspace{-7mm}#8\end{quote}}  % else
 }
-\newcommand{\talk}{\job}
+\renewcommand*{\bibfont}{\normalfont\normalsize\sffamily}
 
 \begin{document}
 
-\sf
+\sffamily
 
 \begin{center}
-    {\titlefont\Huge Curriculum Vitæ • Nicolas Dubois}\\
-    {\titlefont\hspace{2cm}@wo0dyn, 38 ans, développeur web full stack\footnote{\sf
-        Les références pour mes différents postes ou les dissertations
-        sont disponibles sur demande.}}
+  {\titlefont\Huge Nicolas Dubois}\\\vspace*{2mm}
+  {\titlefont\large @wo0dyn, 41 ans, Sr Python/UI Developer}
 \end{center}
 
 \section{État civil}
-    \begin{minipage}[c]{32mm}
-        \includegraphics[width=30mm]{images/wo0dyn-circle.jpg}%
-    \end{minipage}\hfill%
-    \begin{minipage}[c]{20cm}
-        \begin{tabular}{p{48mm}@{ }p{80mm}}
-            {\bfseries Situation de famille}\dotfill&Divorcé, 2 enfants\\
-            {\bfseries Nationalité}\dotfill&Française\\
-            {\bfseries Date de naissance}\dotfill&15 juin 1979 à Nancy (54)\\
-            {\bfseries Courriel}\dotfill&\email{nicolas.c.dubois@gmail.com}\\
-            {\bfseries Page personnelle}\dotfill&\email{https://nicolasdubois.com}\\
-            {\bfseries Moyens de locomotion}\dotfill&Permis B, véhicule\\
-            {\bfseries Centres d'intérêts}\dotfill&Musique (guitare),
-                sports (basket-ball, golf, ski)\\
-        \end{tabular}
-    \end{minipage}%
+
+\begin{minipage}[c]{32mm}
+  \includegraphics[width=30mm]{images/wo0dyn-portrait.png}
+\end{minipage}\hfill
+\begin{minipage}[c]{20cm}
+  \begin{tabular}{p{48mm}@{ }p{85mm}}
+    {\bfseries Adresse}\dotfill&
+      Fons barraves\\&
+      Lieu-dit Quercy\\&
+      46090 Le Montat\\
+    {\bfseries Téléphone}\dotfill&
+      \href{tel:+33615316404}{(+33)6 15 31 64 04}\\
+    {\bfseries Courriel}\dotfill&
+      \href{mailto:nicolas.c.dubois@gmail.com}{nicolas.c.dubois@gmail.com}\\
+    {\bfseries Page personnelle}\dotfill&
+      \href{https://nicolasdubois.com}{https://nicolasdubois.com}\\
+    {\bfseries Date de naissance}\dotfill&
+      15 juin 1979 à Nancy (54)\\
+    {\bfseries Centres d'intérêts}\dotfill&
+      Musique (guitare), basket-ball, sculture sur bois\\
+  \end{tabular}
+\end{minipage}
 
 \section{Expérience professionnelle}
+
+20 années d'expérience en développement, 10 en e-commerce,
+7 en télétravail à temps complet.
 
 \subsection{Emplois en informatique}
 
 \begin{description}
-    \job{PeopleDoc}{télétravail, Paris}{75}{CDI}{Mars 2016}{
-        Développement sur la plateforme de PeopleDoc sur une stack Linux,
-        Python (Django), PostgreSQL, Redis, RabbitMQ.
-        \website{http://www.people-doc.com}
-    }
-    \job{Oscaro}{télétravail, Gennevilliers}{91}{CDI}{Avril 2014--Novembre 2015}{
-        Développement du site international d'Oscaro sur une stack Linux,
-        Python (Django), PostgreSQL, Redis, ElasticSearch.
-        \website{https://www.oscaro.be}
-    }
-    \job{AMG Développement | Groupe GPdis France}{Eurocentre}{31}{CDI}{Octobre 2009--Avril 2014}{
-        J'ai été développeur principal d'applications web chez AMG Développement,
-        pôle e-commerce de la filiale du groupe GPdis France.
-        Je suis intervenu sur les applications internes (Django, symfony, ZF)
-        et également sur la plateforme Magento du groupe (Discounteo, Villatech, Pulsat).
-        \website{http://www.villatech.fr}
-    }
-    \job{Ekinos | Groupe Eklas}{Labège}{31}{CDI}{Avril 2009--Octobre 2009}{
-        J'ai été développeur/concepteur web et chef de projet junior pour la société Ekinos,
-        une agence web spécialisée dans le développement de solutions e-commerce avec la
-        plateforme Magento.
-        \website{http://www.labsoft.fr}
-    }
-    \job{WaterProof}{Labastide Saint-Pierre}{82}{CDI}{Novembre 2007--Avril 2009}{
-        J'ai été développeur/concepteur web pour la société WaterProof, où j'ai
-        participé au développement d'applications web à forte valeur ajoutée pour
-        des grands comptes (Spot Image, Dalta, ITM) de la région toulousaine avec
-        le framework symfony\footnote{\sf J'ai suivi la formation symfony
-        dispensée par SensioLabs, créateur du framework.}.
-        \website{http://www.waterproof.fr}
-    }
-    \job{MaisMoinsCher.com}{Gaillac}{81}{CDI}{Novembre 2005--Octobre 2007}{
-        J'ai été développeur web principal pour le e-commerçant MaisMoinsCher.com
-        où j'ai développé :\\
-            \hspace*{5mm}- une application intranet pour la gestion du catalogue
-                de la boutique ;\\
-            \hspace*{5mm}- plusieurs modules dans la partie backoffice dont
-                notamment un gestionnaire de stock ;\\
-            \hspace*{5mm}- un module de paiement Sofinco pour la partie
-                frontoffice ;\\
-            \hspace*{5mm}- un pricebot (outil de veille concurrentielle) pour la
-                gestion des fournisseurs.
-        \website{http://www.maismoinscher.com}
-    }
-    \job{Laboratoire Leibniz--IMAG}{Grenoble}{38}{Stage Master de Recherche}{Février--Juillet 2005}{
-        Développement et intégration d'un module émotionnel sur une plateforme
-        d'agent conversationnel de recommandation.
-        Modélisation en UML et implémentation en langage Java.
-        \website{http://magma.imag.fr}
-    }
+  \job{Python/UI Developer, DesignOps Engineer}
+      {PeopleDoc/UKG (Ultimate Kronos Group)}
+      {Télétravail, Weston, FL \& Lowell, MA, États-Unis}
+      {CDI}
+      {Mars 2016}{Present}{4 ans, 11 mois}{
+      Développement sur la plateforme de PeopleDoc, avec plusieurs missions :
+      \begin{list}{•}{}
+        \item{} Référent UI sur les projets Django
+        \item{} Gestion de la migration vers un nouveau Design Language
+          System (DLS) dans les templates Jinja
+        \item{} Mise en place des outils de suivi de l'adoption des
+          différents composants
+        \item{} Prototypage d'applications
+      \end{list}
+  }
+  \job{Python Developer}
+      {Oscaro}
+      {Télétravail, Gennevilliers (91)}
+      {CDI}
+      {Avril 2014}{Fév. 2016}{1 an, 11 mois}{
+      Développement du site international d'Oscaro sur une stack Linux,
+      Python (Django), PostgreSQL, Redis, ElasticSearch.
+  }
+  \job{Lead Full Stack Developer}
+      {AMG Dév. (Groupe GPdis)}
+      {Eurocentre (31)}
+      {CDI}
+      {Octobre 2009}{Avril 2014}{4 ans, 7 mois}{
+      Développement d'applications internes de gestion de prix et
+      clients (Django) et interventions sur la plateforme Magento du
+      groupe (Villatech, Pulsat).
+  }
+  \job{Web Developer | Project Manager}
+      {Ekinos (Groupe Eklas)}
+      {Labège (31)}
+      {CDI}
+      {Avril 2009}{Octobre 2009}{7 mois}{
+      Développement de boutique en ligne avec la plateforme Magento.
+  }
+  \job{Full Stack Developer}
+      {WaterProof}
+      {Montauban (82)}
+      {CDI}
+      {Novembre 2007}{Avril 2009}{1 an, 6 mois}{
+  }
+  \job{Full Stack Developer}
+      {MaisMoinsCher.com}
+      {Gaillac (81)}
+      {CDI}
+      {Novembre 2005}{Octobre 2007}{2 ans}{
+  }
+  \job{Junior Developer}
+      {Laboratoire Leibniz (IMAG)}
+      {Grenoble (38)}
+      {Stage Master de Recherche}
+      {Février 2005}{Juillet 2005}{7 mois}{
+  }
 \end{description}
 
 \subsection{Conférences}
 
-\begin{description}
-    \talk{DjangoCong}{Clermont-Ferrant}{63}{Conférence et LT}{Juin 2015}{
-        - Surveiller son application Django avec Sentry.\\
-        \hspace*{-.6cm}- Invoke • Exécuter ses tâches en python.
-    }
-    \talk{Pytong}{Toulon}{83}{LT}{Juin 2013}{
-        À quoi ressemblerait mon python ?
-    }
-    \talk{SudWeb (1\iere{} édition)}{Nîmes}{30}{LT}{Mai 2011}{
-        Vers des langues de programmation.
-    }
-\end{description}
-
+\begin{quote}
+\nocite{*}
+\defbibnote{note}{\emph{
+  J'ai donné quelques conférences autour du langage python et son
+  écosytème :}}
+\printbibliography[heading=none,prenote=note,type=inproceedings]
+\end{quote}
 
 \subsection{Enseignement}
 
 \begin{description}
-    \job{Vidéoscop de Nancy}{Nancy}{54}{Vacation}{Mars--Juin 2003}{
-        Médiatisation du cours d'Interface Homme-Machine de Kamel
-        Smaïli (PR - Nancy 2) pour le projet e-miage.
-        Réalisation de supports multimédia et d'expériences à l'aide des
-        outils Flash et PHP.
-        \website{http://www.e-miage.org}
-    }
-    \job{Université Nancy 2}{Nancy}{54}{Tuteur}{Février--Juin 2002}{
-        Tuteur en informatique à la faculté d'AES : initiation aux outils de
-        bureautique.
-        \website{http://www.univ-nancy2.fr/VIDEOSCOP}
-    }
+  \job{Web Developer/Designer}
+      {Vidéoscop de Nancy}
+      {Nancy (54)}
+      {Vacation}
+      {Mars 2003}{Juin 2003}{4 mois}{
+      Médiatisation du cours d'Interface Homme-Machine (IHM) de Kamel
+      Smaïli (PR Nancy 2) pour le projet e-miage.
+  }
+  \job{Tuteur}
+      {Université Nancy 2}
+      {Nancy (54)}
+      {Tuteur}
+      {Février 2002}{Juin 2002}{5 mois}{
+      Tuteur en informatique à la faculté d'AES : initiation aux outils
+      de bureautique.
+  }
 \end{description}
 
 \section{Formation}
@@ -203,42 +234,36 @@
 \subsection{Diplômes}
 
 \begin{description}
-    \item{2004--2005 : Master de Recherche « Information, Cognition et Apprentissages »}, %
-        spécialité Sciences Cognitives obtenu à l'Institut National Polytechnique
-        de Grenoble, mention~AB
-        \begin{quote}
-            \textbf{Mémoire}\footnote{\sf Mémoire publié aux Éditions
-                universitaires européennes, ISBN 978-613-1-59576-9.} :%
-                \emph{modélisation informatique de la prise de décision à base d'émotions.}
-        \end{quote}
-    \item{2003--2004 : Maîtrise de Sciences Cognitives} obtenue à l'Université Nancy 2, mention~AB
-        \begin{quote}
-        \textbf{Travail d'Études et de Recherche} :
-            \emph{état de l'art des systèmes de communication assistée par ordinateur,
-                point de vue ergonomie cognitive et ingénierie des langues}
-        \end{quote}
-    \item{2002--2003 : Licence de Sciences Cognitives} obtenue à l'Université Nancy 2
-    \item{2000--2001 : DEUG MIAGE} obtenu à l'IUP MIAGE\footnote{\sf IUP MIAGE :
-        Institut Universitaire Professionnalisé en Méthodes Informatiques Appliquées à la
-        Gestion des Entreprises.} de l'Université Nancy 2
-    \item{1998--1999 : Baccalauréat Scientifique} obtenu au Lycée Henri Poincaré de Nancy
+    \item{2004 – 2005 : Master 2 de Recherche (DEA) "Information,
+      Cognition et Apprentissages"}, spécialité Sciences Cognitives
+      \begin{quote}\faBook{} \fullcite{masterthesis2005}\end{quote}
+    \item{2003 – 2004 : Maîtrise de Sciences Cognitives}
+      \begin{quote}\faBook{} \fullcite{ter2004}\end{quote}
+    \item{2002 – 2003 : Licence de Sciences Cognitives} obtenue à
+      l'Université Nancy 2
+    % \item{2000 – 2001 : DEUG MIAGE} obtenu à l'IUP MIAGE\footnote{\sffamily IUP MIAGE :
+    %     Institut Universitaire Professionnalisé en Méthodes Informatiques Appliquées à la
+    %     Gestion des Entreprises.} de l'Université Nancy 2
+    % \item{1998 – 1999 : Baccalauréat Scientifique} obtenu au Lycée Henri Poincaré de Nancy
 \end{description}
 
-\section{Compétences}
+\section{Savoir-faire}
 
-\subsection{Compétences informatiques}
+\subsection{Techniques}
 
 \begin{description}
-    \item{Environnements : }\textbf{GNU/Linux} (Ubuntu, Debian), Unix (Solaris, SunOS), MacOS X ;
-    \item{Langages : }\textbf{Python}, Unix Shells (bash/zsh), Java, {\LaTeX}, XML, XSL ;
-    \item{Développement Web : }\textbf{Python}, \textbf{HTML} 5, (S)\textbf{CSS}, JavaScript, PHP ;
-    \item{Bases de Données : }\textbf{PostgreSQL}, MySQL, SQLite ;
-    \item{Applications/Frameworks : }\textbf{Django}, flask, symfony (1.x), Magento.
-    \item{Notions : }ElasticSearch, Redis, React.js.
+  \item{Environnements : }\textbf{macOS}, \textbf{GNU/Linux} (Debian/Ubuntu) ;
+  \item{Langages : }\textbf{Python}, Unix Shells (bash/zsh), {\LaTeX} ;
+  \item{Développement Web : }\textbf{Python}, \textbf{HTML5}, \textbf{CSS}, JavaScript ;
+  \item{Bases de Données : }\textbf{PostgreSQL}, SQLite ;
+  \item{Frameworks : }\textbf{Django}, flask.
+  \item{Notions : }ElasticSearch, Java, Redis, React.js, PHP, MySQL, XML/XSL.
 \end{description}
 
-\subsection{Compétences linguistiques}
+\subsection{Linguistiques}
 
-\textbf{Français : }langue maternelle • \textbf{Anglais : }lu, écrit, parlé • \textbf{Espagnol : }notions.
+\textbf{Français : }langue maternelle •
+\textbf{Anglais : }lu, écrit, parlé •
+\textbf{Espagnol : }notions
 
 \end{document}
