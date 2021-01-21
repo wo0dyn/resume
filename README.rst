@@ -2,7 +2,7 @@
 Curriculum Vitæ • Résumé
 ========================
 
-This is my (short) résumé.
+This is my (short) résumé in French.
 
 Installation
 ============
@@ -10,18 +10,16 @@ Installation
 Requirements
 ------------
 
-* pdfTeX 3.1415926-2.5-1.40.14 (TeX Live 2013) or newer
-* Python 3.4+
+* pdfTeX 3.14159265-2.6-1.40.21 (TeX Live 2020) or newer
+* Python 3.8+
 
 Create PDF (pdflatex)
 ---------------------
 
-::
+.. code-block:: console
 
-    $ mkproject Resume                                  # virtualenv.wrapper
-    $ git clone git@github.com:wo0dyn/resume .          # Clone this repo
-    $ pip install invoke                                # Install simple task manager in python
-    $ invoke                                            # Default task will build the LaTeX source
+    $ pip install invoke      # Install simple task manager in python
+    $ inv                     # Default task will build the LaTeX source
 
 
 License

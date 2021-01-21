@@ -4,7 +4,7 @@ import os
 from invoke import task
 
 
-BASE = 'Nicolas-Dubois-cv-fr.{ext}'
+BASE = 'Nicolas-Dubois-cv-fr'
 
 
 @task(default=True, name='build')
@@ -17,12 +17,14 @@ def _build(context):
 
 
 @task(name='compile')
-def _compile(context):
+def _compile(context, force=False):
     """
     Compile LaTeX sources.
     """
-    context.run('pdflatex ' + BASE.format(ext='tex'))
-    context.run('pdflatex ' + BASE.format(ext='tex'))
+    context.run(f'pdflatex {BASE}.tex')
+    context.run(f'bibtex {BASE}')
+    context.run(f'pdflatex {BASE}.tex')
+    context.run(f'pdflatex {BASE}.tex')
 
 
 @task(name='open')
@@ -30,7 +32,7 @@ def _open(context):
     """
     Open PDF file in default PDF viewer.
     """
-    context.run('open ' + BASE.format(ext='pdf'))
+    context.run(f'open {BASE}.pdf')
 
 
 @task(name='clean')
@@ -38,13 +40,5 @@ def _clean(context):
     """
     Remove non-(La)TeX files (temp files and PDFs).
     """
-    for f in set(glob(BASE.format(ext='*'))) - set(glob('*.tex')):
+    for f in set(glob(f"{BASE}.*")) - set(glob('*.tex')):
         os.remove(f)
-
-
-@task(name='edit')
-def _edit(context):
-    """
-    Edit LaTeX sources.
-    """
-    context.run('open ' + BASE.format(ext='tex'))
