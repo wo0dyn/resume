@@ -20,5 +20,8 @@ all: ${OUTPUT}
 ${OUTPUT}: ${SOURCE}
 	latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make ${SOURCE}
 
+view:
+	open ${OUTPUT}
+
 clean:
 	latexmk -CA

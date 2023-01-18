@@ -5,8 +5,8 @@
 %
 % KOMA-Script: scrartcl
 %
-% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International
-% License.
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0
+% International License.
 % To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/.
 %
 
@@ -31,7 +31,7 @@
 
 \usepackage[pdftex, colorlinks,
   pdfpagelayout=SinglePage,
-  pdftitle={Curriculum Vitae},
+  pdftitle={Curriculum Vitæ},
   pdfauthor={Nicolas Dubois, @wo0dyn},
   pagebackref=false,
   pdfnewwindow=true,
@@ -39,7 +39,7 @@
   pdfstartview={FitH},
   urlcolor=black,
   linkcolor=black,
-  bookmarksopen
+  % bookmarksopen
 ]{hyperref}
 
 \bibliography{publications.bib}
@@ -90,7 +90,9 @@
   \item{#1}\\
   \textcolor{job-color}{
     \faInstitution{} #2 – #4 \faMapMarker{} #3\\
-    \faCalendar{} #5 – #6 · #7
+    \faCalendar{} \ifthenelse{\isempty{#7}}    % if
+      {#5 – #6}                                % then
+      {#5 – #6 · #7}                           % else
   }
   \ifthenelse{\isempty{#8}}                    % if
     {}                                         % then
@@ -104,22 +106,22 @@
 
 \begin{center}
   {\titlefont\Huge Nicolas Dubois}\\\vspace*{2mm}
-  {\titlefont\large @wo0dyn, 41 ans, Sr Python/UI Developer}
+  {\titlefont\large Sr Software Engineer (Python/UI)}
 \end{center}
 
 \section{État civil}
 
 \begin{minipage}[c]{32mm}
-  \includegraphics[width=30mm]{images/wo0dyn-portrait.png}
+  \includegraphics[width=30mm]{images/wo0dyn-at-djangocong-2018.jpg}
 \end{minipage}\hfill
 \begin{minipage}[c]{20cm}
   \begin{tabular}{p{48mm}@{ }p{85mm}}
     {\bfseries Adresse}\dotfill&
-      Fons barraves\\&
-      Lieu-dit Quercy\\&
-      46090 Le Montat\\
+      Ségala bas\\&
+      46110 Bétaille\\&
+      France\\
     {\bfseries Téléphone}\dotfill&
-      \href{tel:+33615316404}{(+33)6 15 31 64 04}\\
+      \href{tel:+33615316404}{+336 15 31 64 04}\\
     {\bfseries Courriel}\dotfill&
       \href{mailto:nicolas.c.dubois@gmail.com}{nicolas.c.dubois@gmail.com}\\
     {\bfseries Page personnelle}\dotfill&
@@ -127,34 +129,49 @@
     {\bfseries Date de naissance}\dotfill&
       15 juin 1979 à Nancy (54)\\
     {\bfseries Centres d'intérêts}\dotfill&
-      Musique (guitare), basket-ball, sculture sur bois\\
+      Musique (guitare), basket-ball\\
   \end{tabular}
 \end{minipage}
 
 \section{Expérience professionnelle}
 
-20 années d'expérience en développement, 10 en e-commerce,
-7 en télétravail à temps complet.
+% 20 années d'expérience en développement, 10 en e-commerce,
+% 7 en télétravail à temps complet.
 
 \subsection{Emplois en informatique}
 
 \begin{description}
-  \job{Python/UI Developer, DesignOps Engineer}
-      {PeopleDoc/UKG (Ultimate Kronos Group)}
-      {Télétravail, Weston, FL \& Lowell, MA, États-Unis}
+  \job{Senior Software Engineer (Python)}
+      {Alma}
+      {Télétravail, Paris (75)}
       {CDI}
-      {Mars 2016}{Present}{4 ans, 11 mois}{
-      Développement sur la plateforme de PeopleDoc, avec plusieurs missions :
+      {Juin 2021}{Present}{}{
+      Développements sur la plateforme BNPL d'Alma (API/Dashboard) :
       \begin{list}{•}{}
-        \item{} Référent UI sur les projets Django
-        \item{} Gestion de la migration vers un nouveau Design Language
-          System (DLS) dans les templates Jinja
-        \item{} Mise en place des outils de suivi de l'adoption des
-          différents composants
-        \item{} Prototypage d'applications
+        \item{Intl.} Internationalisation/localisation des apps Alma
+        \item{API} Développements spécifiques pour l'intégration d'Apple
+        \item{D2C} Participation aux APIs des nos apps mobile Direct-to-Consumer (D2C)
       \end{list}
   }
-  \job{Python Developer}
+  \job{Senior UI Developer (Python), DesignOps Engineer}
+      {PeopleDoc/UKG\footnote{\sf L'entreprise Ultimate Kronos Group (UKG)
+      est issue de la fusion d'Ultimate Software (qui a acquis PeopleDoc
+      en 2018) et de Kronos Incorporated.}}
+      {Télétravail, Weston, FL \& Lowell, MA, États-Unis d'Amérique}
+      {CDI}
+      {Mars 2016}{Juin 2021}{5 ans, 4 mois}{
+      Développements sur la plateforme de PeopleDoc, avec plusieurs missions :
+      \begin{list}{•}{}
+        \item{UX/UI} Référent sur les projets Django
+        \item{Jinja} Gestion de la migration vers un nouveau Design Language
+          System (DLS) dans les templates
+        \item{Dashboard} Mise en place des outils de suivi de l'adoption des
+          différents composants
+        \item{Prototypes} Prototypage de plusieurs applications ayant donné lieu
+          à des projets
+      \end{list}
+  }
+  \job{Full Stack Developer (Python)}
       {Oscaro}
       {Télétravail, Gennevilliers (91)}
       {CDI}
@@ -162,8 +179,8 @@
       Développement du site international d'Oscaro sur une stack Linux,
       Python (Django), PostgreSQL, Redis, ElasticSearch.
   }
-  \job{Lead Full Stack Developer}
-      {AMG Dév. (Groupe GPdis)}
+  \job{Full Stack Developer, Tech Lead}
+      {AMG Déveveloppement (Groupe GPdis)}
       {Eurocentre (31)}
       {CDI}
       {Octobre 2009}{Avril 2014}{4 ans, 7 mois}{
@@ -178,24 +195,24 @@
       {Avril 2009}{Octobre 2009}{7 mois}{
       Développement de boutique en ligne avec la plateforme Magento.
   }
-  \job{Full Stack Developer}
+  \job{Full Stack Developer (PHP/symfony)}
       {WaterProof}
       {Montauban (82)}
       {CDI}
       {Novembre 2007}{Avril 2009}{1 an, 6 mois}{
   }
-  \job{Full Stack Developer}
-      {MaisMoinsCher.com}
-      {Gaillac (81)}
-      {CDI}
-      {Novembre 2005}{Octobre 2007}{2 ans}{
-  }
-  \job{Junior Developer}
-      {Laboratoire Leibniz (IMAG)}
-      {Grenoble (38)}
-      {Stage Master de Recherche}
-      {Février 2005}{Juillet 2005}{7 mois}{
-  }
+  % \job{Full Stack Developer (PHP)}
+  %     {MaisMoinsCher.com}
+  %     {Gaillac (81)}
+  %     {CDI}
+  %     {Novembre 2005}{Octobre 2007}{2 ans}{
+  % }
+  % \job{Junior Developer}
+  %     {Laboratoire Leibniz (IMAG)}
+  %     {Grenoble (38)}
+  %     {Stage Master de Recherche}
+  %     {Février 2005}{Juillet 2005}{7 mois}{
+  % }
 \end{description}
 
 \subsection{Conférences}
@@ -217,7 +234,7 @@
       {Vacation}
       {Mars 2003}{Juin 2003}{4 mois}{
       Médiatisation du cours d'Interface Homme-Machine (IHM) de Kamel
-      Smaïli (PR Nancy 2) pour le projet e-miage.
+      Smaïli (Professeur des universités à l'Université de Lorraine) pour le projet e-miage.
   }
   \job{Tuteur}
       {Université Nancy 2}
@@ -239,12 +256,7 @@
       \begin{quote}\faBook{} \fullcite{masterthesis2005}\end{quote}
     \item{2003 – 2004 : Maîtrise de Sciences Cognitives}
       \begin{quote}\faBook{} \fullcite{ter2004}\end{quote}
-    \item{2002 – 2003 : Licence de Sciences Cognitives} obtenue à
-      l'Université Nancy 2
-    % \item{2000 – 2001 : DEUG MIAGE} obtenu à l'IUP MIAGE\footnote{\sffamily IUP MIAGE :
-    %     Institut Universitaire Professionnalisé en Méthodes Informatiques Appliquées à la
-    %     Gestion des Entreprises.} de l'Université Nancy 2
-    % \item{1998 – 1999 : Baccalauréat Scientifique} obtenu au Lycée Henri Poincaré de Nancy
+    \item{2002 – 2003 : Licence de Sciences Cognitives} obtenue à l'Université Nancy 2
 \end{description}
 
 \section{Savoir-faire}
@@ -254,16 +266,16 @@
 \begin{description}
   \item{Environnements : }\textbf{macOS}, \textbf{GNU/Linux} (Debian/Ubuntu) ;
   \item{Langages : }\textbf{Python}, Unix Shells (bash/zsh), {\LaTeX} ;
-  \item{Développement Web : }\textbf{Python}, \textbf{HTML5}, \textbf{CSS}, JavaScript ;
+  \item{Développement Web : }\textbf{HTML5}, \textbf{CSS3}, JavaScript, htmx ;
   \item{Bases de Données : }\textbf{PostgreSQL}, SQLite ;
-  \item{Frameworks : }\textbf{Django}, flask.
+  \item{Frameworks : }\textbf{Django}, flask, \textbf{FastAPI}.
   \item{Notions : }ElasticSearch, Java, Redis, React.js, PHP, MySQL, XML/XSL.
 \end{description}
 
 \subsection{Linguistiques}
 
 \textbf{Français : }langue maternelle •
-\textbf{Anglais : }lu, écrit, parlé •
-\textbf{Espagnol : }notions
+\textbf{Anglais : }lu, écrit, parlé (B2{\scriptsize +}) •
+\textbf{Espagnol : }notions (A1)
 
 \end{document}
