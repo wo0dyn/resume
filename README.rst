@@ -18,7 +18,7 @@ Create PDF (pdflatex)
 
 .. code-block:: console
 
-    $ make                     # Default task will build the LaTeX source
+    $ make                    # Default task will build the LaTeX source
 
 
 License
