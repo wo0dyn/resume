@@ -1,0 +1,43 @@
+version: '3'
+
+vars:
+  BASENAME: Nicolas-Dubois-cv
+  LANGS:
+    - en
+    - fr
+
+tasks:
+  default:
+    desc: Show available tasks
+    cmds:
+      - task --list
+
+  build:
+    desc: Build all language versions
+    sources:
+      - "*.tex"
+      - "*.bib"
+    generates:
+      - "{{.BASENAME}}-*.pdf"
+    cmds:
+      - for: {var: LANGS, as: LANG}
+        cmd: latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make {{.BASENAME}}-{{.LANG}}.tex
+
+  collect:
+    desc: Collect PDFs into release-files directory
+    deps:
+      - build
+    dir: release-files
+    cmds:
+      - cp ../{{.BASENAME}}-*.pdf .
+
+  view:
+    desc: View PDFs
+    cmds:
+      - for: {var: LANGS, as: LANG}
+        cmd: open {{.BASENAME}}-{{.LANG}}.pdf
+
+  clean:
+    desc: Clean all generated files
+    cmds:
+      - latexmk -CA

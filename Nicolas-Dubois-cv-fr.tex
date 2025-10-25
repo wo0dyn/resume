@@ -10,7 +10,7 @@
 % To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/.
 %
 
-\documentclass[a4paper, 11pt]{scrartcl}
+\documentclass[a4paper, 10pt]{scrartcl}
 
 \usepackage[american, french]{babel}
 \usepackage[utf8]{inputenc}
@@ -41,7 +41,7 @@
   linkcolor=black,
 ]{hyperref}
 
-\bibliography{publications.bib}
+\bibliography{publications-fr.bib}
 \urlstyle{sf}
 \pagestyle{empty}
 \setmarginsrb
@@ -87,11 +87,12 @@
   % 7: Duration
   % 8: Description
   \item{#1}\\
+    \faInstitution{} #2 – #4\\
   \textcolor{job-color}{
-    \faInstitution{} #2 – #4 \faMapMarker{} #3\\
     \faCalendar{} \ifthenelse{\isempty{#7}}    % if
       {#5 – #6}                                % then
       {#5 – #6 · #7}                           % else
+    \\\faMapMarker{} #3
   }
   \ifthenelse{\isempty{#8}}                    % if
     {}                                         % then
@@ -106,46 +107,48 @@
 \begin{center}
   {\titlefont\Huge Nicolas Dubois}\\\vspace*{2mm}
   {\titlefont\large Senior Software Engineer (Python/UI)}
+
+  \vspace*{7mm}
+  \begin{minipage}[rc]{62mm}
+  \includegraphics[width=60mm]{images/wo0dyn-at-djangocong-2018-squared.jpg}
+  \end{minipage}
+  \begin{minipage}{0.6\textwidth}
+    \begin{tabular}{p{48mm}@{ }p{85mm}}
+      {\bfseries Adresse}\dotfill&
+        194 Route de Labrunette\\&
+        46110 Bétaille en Quercy\\&
+        France\\
+      {\bfseries Téléphone}\dotfill&
+        \href{tel:+33615316404}{+336 15 31 64 04}\\
+      {\bfseries Courriel}\dotfill&
+        \href{mailto:nicolas.c.dubois@gmail.com}{nicolas.c.dubois@gmail.com}\\
+      \vspace*{1mm}&\vspace*{1mm}\\
+      {\bfseries Date de naissance}\dotfill&
+        15 juin 1979 à Nancy (54)\\
+      {\bfseries Centres d'intérêts}\dotfill&
+        Musique (guitare), basketball\\
+      \vspace*{1mm}&\vspace*{1mm}\\
+      {\bfseries Page personnelle}\dotfill&
+        \href{https://nicolasdubois.com}{nicolasdubois.com}\\
+      {\bfseries GitHub}\dotfill&
+        \href{https://github.com/wo0dyn}{github.com/wo0dyn}\\
+      {\bfseries LinkedIn}\dotfill&
+        \href{https://www.linkedin.com/in/wo0dyn/}{linkedin.com/in/wo0dyn/}\\
+    \end{tabular}
+  \end{minipage}
+
+
 \end{center}
 
-\section{État civil}
-
-\begin{minipage}[c]{32mm}
-  \includegraphics[width=30mm]{images/wo0dyn-at-djangocong-2018.jpg}
-\end{minipage}\hfill
-\begin{minipage}[c]{20cm}
-  \begin{tabular}{p{48mm}@{ }p{85mm}}
-    {\bfseries Adresse}\dotfill&
-      194 Route de Labrunette\\&
-      46110 Bétaille en Quercy\\&
-      France\\
-    {\bfseries Téléphone}\dotfill&
-      \href{tel:+33615316404}{+336 15 31 64 04}\\
-    {\bfseries Courriel}\dotfill&
-      \href{mailto:nicolas.c.dubois@gmail.com}{nicolas.c.dubois@gmail.com}\\
-    {\bfseries Page personnelle}\dotfill&
-      \href{https://nicolasdubois.com}{https://nicolasdubois.com}\\
-    {\bfseries Date de naissance}\dotfill&
-      15 juin 1979 à Nancy (54)\\
-    {\bfseries Centres d'intérêts}\dotfill&
-      Musique (guitare), basket-ball\\
-  \end{tabular}
-\end{minipage}
-
 \section{Expérience professionnelle}
-
-% 20 années d'expérience en développement, 10 en e-commerce,
-% 7 en télétravail à temps complet.
-
-\subsection{Emplois en informatique}
 
 \begin{description}
   \job{Senior Software Engineer (Python)}
       {Alma}
       {Télétravail, Paris (75)}
       {CDI}
-      {Juin 2021}{Present}{}{
-      Développements sur la plateforme BNPL d'Alma (API/Dashboard) :
+      {Juin 2021}{Présent}{}{
+      Développements sur la plateforme Buy Now–Pay Later (BNPL) d'Alma (API/Dashboard) :
       \begin{list}{•}{}
         \item{Onboarding} Développement d'APIs Hypermédia pour l'onboarding des marchands
         \item{Intl.} Internationalisation/localisation des apps Alma
@@ -153,7 +156,7 @@
       \end{list}
   }
   \job{Senior UI Developer (Python), DesignOps Engineer}
-      {PeopleDoc/UKG\footnote{\sf L'entreprise Ultimate Kronos Group (UKG)
+      {PeopleDoc/UKG\footnote{\sffamily L'entreprise Ultimate Kronos Group (UKG)
       est issue de la fusion d'Ultimate Software (qui a acquis PeopleDoc
       en 2018) et de Kronos Incorporated.}}
       {Télétravail, Weston, FL \& Lowell, MA, États-Unis d'Amérique}
@@ -179,8 +182,8 @@
       Python (Django), PostgreSQL, Redis, ElasticSearch.
   }
   \job{Full Stack Developer, Tech Lead}
-      {AMG Déveveloppement (Groupe GPdis)}
-      {Eurocentre (31)}
+      {AMG Développement (Groupe GPdis)}
+      {Toulouse/Eurocentre (31)}
       {CDI}
       {Octobre 2009}{Avril 2014}{4 ans, 7 mois}{
       Développement d'applications internes de gestion de prix et
@@ -189,7 +192,7 @@
   }
   \job{Web Developer | Project Manager}
       {Ekinos (Groupe Eklas)}
-      {Labège (31)}
+      {Toulouse (31)}
       {CDI}
       {Avril 2009}{Octobre 2009}{7 mois}{
       Développement de boutique en ligne avec la plateforme Magento.
@@ -199,6 +202,7 @@
       {Montauban (82)}
       {CDI}
       {Novembre 2007}{Avril 2009}{1 an, 6 mois}{
+      fdlskfjlsd jflsdkj lfkjsdl kfjlskjl
   }
   % \job{Full Stack Developer (PHP)}
   %     {MaisMoinsCher.com}
@@ -219,8 +223,8 @@
 \begin{quote}
 \nocite{*}
 \defbibnote{note}{\emph{
-  J'ai donné quelques conférences autour du langage python et son
-  écosytème :}}
+  J'ai assisté à de nombreuses conférences au fil des ans et j'ai également
+  donné quelques conférences sur le langage Python et son écosystème :}}
 \printbibliography[heading=none,prenote=note,type=inproceedings]
 \end{quote}
 
@@ -232,8 +236,8 @@
       {Nancy (54)}
       {Vacation}
       {Mars 2003}{Juin 2003}{4 mois}{
-      Médiatisation du cours d'Interface Homme-Machine (IHM) de Kamel
-      Smaïli (Professeur des universités à l'Université de Lorraine) pour le projet e-miage.
+      Médiatisation du cours d'Interface Homme-Machine (IHM) de Pr.~Kamel
+      Smaïli (Université de Lorraine) pour le projet e-miage.
   }
   \job{Tuteur}
       {Université Nancy 2}
@@ -247,8 +251,6 @@
 
 \section{Formation}
 
-\subsection{Diplômes}
-
 \begin{description}
     \item{2004 – 2005 : Master 2 de Recherche (DEA) "Information,
       Cognition et Apprentissages"}, spécialité Sciences Cognitives
@@ -260,7 +262,7 @@
 
 \section{Savoir-faire}
 
-\subsection{Techniques}
+% \subsection{Techniques}
 
 \begin{description}
   \item{Environnements : }\textbf{macOS}, \textbf{GNU/Linux} (Debian/Ubuntu) ;
@@ -271,7 +273,7 @@
   \item{Notions : }ElasticSearch, Java, Redis, React.js/TypeScript, PHP, MySQL, XML/XSL.
 \end{description}
 
-\subsection{Linguistiques}
+\subsection{Langues}
 
 \textbf{Français : }langue maternelle •
 \textbf{Anglais : }lu, écrit, parlé (B2{\scriptsize +}) •

@@ -1,0 +1,26 @@
+name: Build and Release PDFs
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: brew install task mactex
+
+      - name: Build and collect PDFs
+        run: task collect
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release-files/*.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

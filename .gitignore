@@ -195,3 +195,6 @@ sympy-plots-for-*.tex/
 *.sav
 
 *.pdf
+
+.task/
+.DS_Store

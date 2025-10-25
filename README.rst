@@ -2,7 +2,7 @@
 Curriculum Vitæ • Résumé
 ========================
 
-This is my (short) résumé in French.
+This is my (short) résumé in English/French.
 
 Installation
 ============
@@ -18,7 +18,7 @@ Create PDF (pdflatex)
 
 .. code-block:: console
 
-    $ make                    # Default task will build the LaTeX source
+    $ task               # Default task will build the LaTeX source
 
 
 License
