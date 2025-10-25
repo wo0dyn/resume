@@ -12,8 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Add task repo 
+        run: brew install go-task/tap/go-task
+        
       - name: Install dependencies
-        run: brew install task basictex
+        run: brew install go-task basictex
 
       - name: Build and collect PDFs
         run: task collect
