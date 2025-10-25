@@ -12,11 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Add task repo 
-        run: brew install go-task/tap/go-task
-        
       - name: Install dependencies
         run: brew install go-task basictex
+
+      - name: Install additional LaTeX packages
+        run: |
+          export PATH="/usr/local/opt/texlive/bin/x86_64-darwin:$PATH"
+          tlmgr install fontawesome biblatex
 
       - name: Build and collect PDFs
         run: task collect
