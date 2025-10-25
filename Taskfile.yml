@@ -41,3 +41,19 @@ tasks:
     desc: Clean all generated files
     cmds:
       - latexmk -CA
+
+  release:*:
+    desc: Create a release
+    vars:
+      TARGET: '{{index .MATCH 0}}'
+      VERSION:
+        sh: git semver -target={{.TARGET}}
+      TAG: 'v{{.VERSION}}'
+    cmds:
+      - git tag {{.TAG}} -m"{{.TAG}}"
+      - git push --tags
+
+  release:
+    desc: Create a release
+    cmds:
+      - task release:patch
